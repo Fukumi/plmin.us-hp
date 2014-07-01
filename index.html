@@ -10,7 +10,44 @@
     <link rel="icon" href="images/favicon.png" type="image/png"><!-- LayerSlider stylesheet -->
 <link rel="stylesheet" href="assets/layerslider/css/layerslider.css" type="text/css">
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script type="text/javascript">
+function initialize() {
+  var myLatlng = new google.maps.LatLng(35.609226, 139.730186);
+  var mapOptions = {
+    zoom: 12,
+	scrollwheel: false,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+	  animation: google.maps.Animation.DROP,
+      title: 'Hello World!'
+  });
+  
+  var contentString = '<div class="info-window-content"><h2>Web Pixels</h2>'+
+  					  '<h3>Designing forward</h3>'+
+					  '<p>Some more details for directions or company informations...</p></div>';
+					  
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+  
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
 </head>
+
 <body>
 
 <section id="asideMenu" class="aside-menu">
@@ -387,11 +424,9 @@
     <div id="layerslider" style="width:100%;height:500px;">        
         <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
         	<!-- slide background -->
-            <img src="images/slider/fw-1.jpg" class="ls-bg" alt="Slide background"/>
+            <img src="images/carousel/carousel-img-2.png" class="ls-bg" alt="Slide background"/>
             
-            <!-- Right Image -->
-            <img src="images/prv/human-img-1.png" class="ls-l" style="top:58%; left:70%;" data-ls="offsetxin:0;offsetyin:250;durationin:950;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" alt="Image layer">
-            
+           
             <!-- Left Text -->
             <h3 class="ls-l title" style="width:500px; top:25%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">こんにちは！はじめまして</h3>
             	<h3 class="ls-l subtitle" style="top:40%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:1500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">　　　サクサク・楽しく・簡単に！<br>　　　　　　<strong><u>+</u>plmin.us</strong>です。</h3>
@@ -462,7 +497,7 @@
                                     <a href="#" class="btn btn-xs btn-one"><i class="fa fa-link"></i> View</a>
                                 </div>
                             </div>
-                            <h2>　　　　　<strong>plan/計画</strong></h2>
+                            <h2	>　　　<strong>plan/計画</strong></h2>
                             <p>
                             目標の設定は「自分のやりたい事」<br>が認識できる作業ですね<br><strong>実現させる為には何が必要だろう</strong>
                             </p>
@@ -480,7 +515,7 @@
                                     <a href="#" class="btn btn-xs btn-one"><i class="fa fa-link"></i> View</a>
                                 </div>
                             </div>
-                            <h2>　　　　　　<strong>Do/実行</strong></h2>
+                            <h2>　　　　<strong>Do/実行</strong></h2>
                             <p>
                             さあ、計画は出来た！<br>さて、この計画をどうまとめれば<br>難しい進捗の管理に困りますね。
                             </p>
@@ -498,7 +533,7 @@
                                     <a href="#" class="btn btn-xs btn-one"><i class="fa fa-link"></i> View</a>
                                 </div>
                             </div>
-                            <h2>　　　　<strong>Check/評価</strong></h2>
+                            <h2>　　　<strong>Check/評価</strong></h2>
                             <p>
                             プロジェクトも終盤！<br>さてさて、作業は順調･･･ではない!!<br>一体誰が作業しているの!?
                   
@@ -517,7 +552,7 @@
                                     <a href="#" class="btn btn-xs btn-one"><i class="fa fa-link"></i> View</a>
                                 </div>
                             </div>
-                            <h2>　　　　<strong>Action/改善</strong></h2>
+                            <h2>　　　<strong>Action/改善</strong></h2>
                             <p>
                             反省無くして前進なし!
                             <br>次に繋げる為に、今ある問題を<br>確認しましょう
@@ -565,7 +600,7 @@
                                 <h3 class="price-tag color-two"><span>$</span>15<span>.99</span></h3>
                                 <small>Billed annuallyor $10 month-to-month.</small>
                             </div>
-                            <p class="plan-select text-center"><button type="submit" class="btn btn-two"><i class="icon-ok"></i> Get started</button></p>
+                            <p class="plan-select text-center"><button type="submit" class="btn btn-two"><i class="icon-ok"></i> 始める</button></p>
                             <p class="plan-info">Lorem ipsum dolor sit amet, consect adipiscing elit.</p>
                             
                         </div>
@@ -578,7 +613,7 @@
                                 <h3 class="price-tag color-two"><span>$</span>20<span>.99</span></h3>
                                 <small>Billed annuallyor $10 month-to-month.</small>
                             </div>
-                            <p class="plan-select text-center"><button type="submit" class="btn btn-two"><i class="icon-ok"></i> Get started</button></p>
+                            <p class="plan-select text-center"><button type="submit" class="btn btn-two"><i class="icon-ok"></i> 始める</button></p>
                             <p class="plan-info">Lorem ipsum dolor sit amet, consect adipiscing elit.</p>
                             
                         </div>
@@ -590,7 +625,7 @@
                                 <h3 class="price-tag color-two"><span>$</span>33<span>.99</span></h3>
                                 <small>Billed annuallyor $10 month-to-month.</small>
                             </div>
-                            <p class="plan-select text-center"><button type="submit" class="btn btn-two"><i class="icon-ok"></i> Get started</button></p>
+                            <p class="plan-select text-center"><button type="submit" class="btn btn-two"><i class="icon-ok"></i> 始める</button></p>
                             <p class="plan-info">Lorem ipsum dolor sit amet, consect adipiscing elit.</p>
                             
                         </div>
@@ -659,9 +694,9 @@
                                     </tr>
                                     <tr>
                                         <td> </td>
-                                        <td><a class="btn btn-two" href="#"><i class="fa fa-shopping-cart"></i> Order now</a></td>
-                                        <td><a class="btn btn-three" href="#"><i class="fa fa-shopping-cart"></i> Order now</a></td>
-                                        <td><a class="btn btn-two" href="#"><i class="fa fa-shopping-cart"></i> Order now</a></td>
+                                        <td><a class="btn btn-two" href="#"><i class="fa fa-shopping-cart"></i> 今すぐ注文</a></td>
+                                        <td><a class="btn btn-three" href="#"><i class="fa fa-shopping-cart"></i> 今すぐ注文</a></td>
+                                        <td><a class="btn btn-two" href="#"><i class="fa fa-shopping-cart"></i> 今すぐ注文</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -714,9 +749,12 @@
                     <div class="col-md-8">
                         <h3 class="section-title">代表あいさつ</h3>
                         <p class="delimiter">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        閲覧ありがとうございます。皆さんにとってのプロジェクト管理とは？･･･と考えた時、必要な情報の入力や確認がシンプルに分かりやすく「手帳」のように使える身近なものであって欲しい。
     <br><br>
-    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    チームみんなで最高のモノを作り上げる為に、誰もが分かりやすく管理でき、作成・入力にかかる負担を最小限に出来るものにしました。
+    <br>
+    もちろん皆で共有するものだから、通信もサクサク動くようになっています。
+    皆さんのお役に立つ事が出来ればと思います。
                         </p>
                     </div>
                     <div class="col-md-4">
@@ -842,89 +880,7 @@
     </section>
     
     
-    <section class="slice bg-5">
-        <div class="w-section inverse">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <h3 class="section-title"><span>Our company<span class="border"></span></span></h3>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="images/prv/col-img-4.jpg" alt="" class="img-responsive img-thumbnail">
-                            </div>
-                            <div class="col-md-8">
-                                <p>
-                                Lorem ipsum dolor sit amet, feugiat delicata liberavisse id cum, no quo maiorum intellegebat, liber regione eu sit. Mea cu case ludus integre, vide viderer eleifend ex mea. His at soluta regione diceret, cum et atqui placerat petentium. 
-                                <br>
-                                Per amet nonumy periculis ei. Lorem ipsum dolor sit amet, feugiat delicata liberavisse id cum.
-                                </p>
-                            </div>
-                        </div>
-                        <blockquote class="blockquote-1">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid</p>
-                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        </blockquote>
-                    </div>
-                    <div class="col-md-5">
-                        <h3 class="section-title">Our expertise</h3>
-                        <div class="widget">
-                            <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
-                                        Web design
-                                      </a>
-                                    </h4>
-                                  </div>
-                                  <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
-                                    <div class="panel-body">
-                                    <p>
-                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                    </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
-                                        Software development
-                                      </a>
-                                    </h4>
-                                  </div>
-                                  <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
-                                    <div class="panel-body">
-                                      <p>
-                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                    </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="">
-                                        Search engine optimization
-                                      </a>
-                                    </h4>
-                                  </div>
-                                  <div id="collapseThree" class="panel-collapse in" style="height: auto;">
-                                    <div class="panel-body">
-                                      <p>
-                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                    </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </section>
+    
     
    
     
@@ -957,65 +913,15 @@
     
   on>
     
-    <section class="slice bg-3">
-	<div class="w-section inverse">
-        <div class="container">
-        	<h3 class="section-title">Our partners</h3>
-            <div class="row">
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="client">
-                    	<a href="#">
-                    		<img src="images/clients/client-1.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="client">
-                    	<a href="#">
-                    		<img src="images/clients/client-2.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="client">
-                    	<a href="#">
-                    		<img src="images/clients/client-3.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="client">
-                    	<a href="#">
-                    		<img src="images/clients/client-4.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="client">
-                    	<a href="#">
-                    		<img src="images/clients/client-7.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <div class="client">
-                    	<a href="#">
-                    		<img src="images/clients/client-6.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>    <footer class="footer">
+       <footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
             	<div class="col">
-                   <h4>Contact us</h4>
+                   <h4>お問い合わせ</h4>
                    <ul>
-                        <li>5th Avenue, New York - United States</li>
-                        <li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567 </li>
+                        <li>住所:〒＊＊＊ー＊＊＊＊<br>東京都品川区＊＊＊＊１２３４５−６
+                        <li>連絡先:03-＊＊＊＊ー＊＊＊＊ </li>
                         <li>Email: <a href="mailto:hello@example.com" title="Email Us">hello@example.com</a></li>
                         <li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
                         <li>Creating great templates is our passion</li>
@@ -1023,20 +929,7 @@
                  </div>
             </div>
             
-            <div class="col-md-3">
-            	<div class="col">
-                    <h4>Mailing list</h4>
-                    <p>Sign up if you would like to receive occasional treats from us.</p>
-                    <form class="form-inline">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Your email address...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-two" type="button">Go!</button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            
             
             <div class="col-md-3">
             	<div class="col col-social-icons">
